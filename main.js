@@ -70,9 +70,10 @@ try {
     const shipsData = JSON.parse(fs.readFileSync(shipsPath, 'utf-8'));
     // Build a compact reference for the prompt
     const abbrs = shipsData.famous_abbreviations?.mappings || {};
+    const cnNames = shipsData.chinese_names?.mappings || {};
     const nations = [];
     for (const [key, val] of Object.entries(shipsData)) {
-      if (key === 'famous_abbreviations') continue;
+      if (key === 'famous_abbreviations' || key === 'chinese_names') continue;
       const types = [];
       if (val.destroyers?.length) types.push(`DD:${val.destroyers.slice(0, 20).join(',')}`);
       if (val.cruisers?.length) types.push(`CA/CL:${val.cruisers.slice(0, 20).join(',')}`);
@@ -81,8 +82,9 @@ try {
       if (val.submarines?.length) types.push(`SS:${val.submarines.slice(0, 5).join(',')}`);
       if (types.length) nations.push(`${val.prefix}(${val.name_cn}): ${types.join('; ')}`);
     }
-    const abbrStr = Object.entries(abbrs).map(([k, v]) => `${k}=${v}`).join(', ');
-    shipKnowledge = `\n\nShip name knowledge (recognize these in chat):\n${nations.join('\n')}\n\nCommon abbreviations: ${abbrStr}`;
+    const abbrStr = Object.entries(abbrs).slice(0, 40).map(([k, v]) => `${k}=${v}`).join(', ');
+    const cnStr = Object.entries(cnNames).slice(0, 60).map(([k, v]) => `${k}=${v}`).join(', ');
+    shipKnowledge = `\n\nShip names — recognize these in chat. Chinese players often use Chinese names (e.g., "无比" = Incomparable, "大猴" = Grosser Kurfurst, "岛风" = Shimakaze).\nCommon abbreviations: ${abbrStr}\nCommon Chinese names: ${cnStr}`;
   }
 } catch (e) {
   console.error('[AI] Failed to load ships.json:', e.message);
