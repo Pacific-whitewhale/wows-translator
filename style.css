@@ -196,6 +196,28 @@ textarea::placeholder {
   padding-top: 40px;
 }
 
+/* AI 加载动画 */
+.ai-loading {
+  color: #80c0ff;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ai-loading .dots::after {
+  content: '';
+  animation: ai-dots 1.4s steps(4, end) infinite;
+}
+
+@keyframes ai-dots {
+  0%   { content: ''; }
+  25%  { content: '.'; }
+  50%  { content: '..'; }
+  75%  { content: '...'; }
+  100% { content: ''; }
+}
+
 .result-content {
   display: flex;
   flex-direction: column;

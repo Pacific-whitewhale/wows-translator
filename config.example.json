@@ -1,0 +1,7 @@
+{
+  "ai": {
+    "provider": "anthropic",
+    "apiKey": "sk-ant-your-api-key-here",
+    "model": "claude-haiku-4-5-20251001"
+  }
+}

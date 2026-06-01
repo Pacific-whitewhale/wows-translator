@@ -7,6 +7,10 @@ let phrases = [];
 let truths = [];
 let classDialogues = [];
 let currentResult = null;
+let isAILoading = false;
+
+// 渲染进程级 AI 缓存，避免重复 IPC 调用
+const aiCache = new Map();
 
 // -----------------------------------------------------------
 // 6.1 loadData
@@ -333,28 +337,65 @@ function findBestLocalMatch(input) {
 }
 
 // -----------------------------------------------------------
-// 6.1 translatePhrase
+// 6.1 translatePhrase  (async — AI fallback on miss)
 // -----------------------------------------------------------
-function translatePhrase(input) {
+async function translatePhrase(input) {
   const match = findBestLocalMatch(input);
 
-  if (match.match_type === 'fallback' || !match.item) {
-    return fallbackResult(input);
+  if (match.match_type !== 'fallback' && match.item) {
+    const item = match.item;
+    return {
+      phrase: item.phrase,
+      surface_meaning: item.surface_meaning || '',
+      real_meaning: item.real_meaning || '',
+      salt_score: item.salt_score || 0,
+      blame_score: item.blame_score || 0,
+      reply: item.reply || '',
+      tags: item.tags || [],
+      match_type: match.match_type,
+      confidence: Math.round(match.score * 100),
+      is_low_confidence: match.match_type === 'fuzzy_low'
+    };
   }
 
-  const item = match.item;
-  return {
-    phrase: item.phrase,
-    surface_meaning: item.surface_meaning || '',
-    real_meaning: item.real_meaning || '',
-    salt_score: item.salt_score || 0,
-    blame_score: item.blame_score || 0,
-    reply: item.reply || '',
-    tags: item.tags || [],
-    match_type: match.match_type,
-    confidence: Math.round(match.score * 100),
-    is_low_confidence: match.match_type === 'fuzzy_low'
-  };
+  // ── 本地未命中 → 尝试 AI ────────────────────────────
+  const cacheKey = input.trim();
+  if (aiCache.has(cacheKey)) {
+    const cached = aiCache.get(cacheKey);
+    return { ...cached, match_type: 'ai', confidence: cached.confidence || 85 };
+  }
+
+  if (window.electronAPI && window.electronAPI.aiTranslate) {
+    try {
+      const aiResp = await window.electronAPI.aiTranslate(cacheKey);
+
+      if (aiResp.result) {
+        const r = aiResp.result;
+        const aiResult = {
+          phrase: r.phrase || cacheKey,
+          surface_meaning: r.surface_meaning || '',
+          real_meaning: r.real_meaning || '',
+          salt_score: typeof r.salt_score === 'number' ? r.salt_score : 50,
+          blame_score: typeof r.blame_score === 'number' ? r.blame_score : 50,
+          reply: r.reply || '',
+          tags: r.tags || [],
+          match_type: 'ai',
+          confidence: 80,
+          is_low_confidence: false
+        };
+        aiCache.set(cacheKey, aiResult);
+        return aiResult;
+      }
+
+      // AI 不可用（no_config / api_error / timeout）→ 兜底
+      console.log('[AI] Unavailable:', aiResp.error, aiResp.detail || '');
+    } catch (e) {
+      console.log('[AI] Exception:', e.message);
+    }
+  }
+
+  // ── 最终兜底 ─────────────────────────────────────────
+  return fallbackResult(input);
 }
 
 // -----------------------------------------------------------
@@ -378,7 +419,17 @@ function fallbackResult(text) {
 // -----------------------------------------------------------
 // renderTranslation
 // -----------------------------------------------------------
+function showAILoading() {
+  isAILoading = true;
+  const placeholder = document.getElementById('result-placeholder');
+  const content = document.getElementById('result-content');
+  placeholder.style.display = 'block';
+  placeholder.innerHTML = '<span class="ai-loading">🤖 AI 分析中<span class="dots"></span></span>';
+  content.style.display = 'none';
+}
+
 function renderTranslation(result) {
+  isAILoading = false;
   currentResult = result;
 
   const placeholder = document.getElementById('result-placeholder');
@@ -386,6 +437,7 @@ function renderTranslation(result) {
 
   if (!result) {
     placeholder.style.display = 'block';
+    placeholder.textContent = '翻译结果会显示在这里...';
     content.style.display = 'none';
     return;
   }
@@ -408,6 +460,7 @@ function renderTranslation(result) {
     'fuzzy':    '内置词库 · 模糊匹配 · ' + (result.confidence || 0) + '%',
     'fuzzy_low':'内置词库 · 低置信度匹配 · ' + (result.confidence || 0) + '%（该结果可能不完全准确）',
     'fallback': '未命中词库 · 默认回复',
+    'ai':       '🤖 AI 智能分析 · 80%（大模型生成，仅供参考）',
     'random':   '内置词库 · 随机换词 · 100%'
   };
 
@@ -481,10 +534,35 @@ function showCopyToast(msg) {
 // Event Handlers
 // -----------------------------------------------------------
 
-function handleTranslate() {
+async function handleTranslate() {
   const input = document.getElementById('input-text').value;
-  const result = translatePhrase(input);
-  renderTranslation(result);
+  if (!input || !input.trim()) return;
+
+  // 先快速走本地匹配
+  const localMatch = findBestLocalMatch(input);
+  if (localMatch.match_type !== 'fallback' && localMatch.item) {
+    const item = localMatch.item;
+    renderTranslation({
+      phrase: item.phrase,
+      surface_meaning: item.surface_meaning || '',
+      real_meaning: item.real_meaning || '',
+      salt_score: item.salt_score || 0,
+      blame_score: item.blame_score || 0,
+      reply: item.reply || '',
+      tags: item.tags || [],
+      match_type: localMatch.match_type,
+      confidence: Math.round(localMatch.score * 100),
+      is_low_confidence: localMatch.match_type === 'fuzzy_low'
+    });
+    return;
+  }
+
+  // 本地未命中 → 显示加载 → 调 AI
+  showAILoading();
+  const result = await translatePhrase(input);
+  if (isAILoading) {
+    renderTranslation(result);
+  }
 }
 
 function handleRandomPhrase() {
