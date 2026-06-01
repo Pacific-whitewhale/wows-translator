@@ -1,0 +1,22 @@
+{
+  "name": "wows-translator",
+  "version": "0.1.0",
+  "description": "A floating desktop meme translator for World of Warships random battle chat.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^42.3.0",
+    "electron-builder": "latest"
+  },
+  "build": {
+    "appId": "com.example.wowstranslator",
+    "productName": "WoWS Translator",
+    "win": {
+      "target": "nsis"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'">
+  <title>WoWS Translator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <div class="title-bar">
+      <span class="title-text">WoWS Translator</span>
+      <div class="title-buttons">
+        <button id="btn-minimize" class="title-btn" title="最小化">&#x2014;</button>
+        <button id="btn-close" class="title-btn" title="关闭">&#x2715;</button>
+      </div>
+    </div>
+
+    <div class="subtitle">海战黑话翻译姬 / Your Battle Chat Decoder</div>
+
+    <div class="input-area">
+      <textarea
+        id="input-text"
+        placeholder="输入一段海战黑话，比如 no support"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <div class="button-row">
+      <button id="btn-translate" class="btn btn-primary">翻译</button>
+      <button id="btn-random-phrase" class="btn btn-secondary">换个黑话</button>
+      <button id="btn-truth" class="btn btn-secondary">随机真话</button>
+      <button id="btn-copy" class="btn btn-copy">复制结果</button>
+    </div>
+
+    <div class="result-area" id="result-area">
+      <div class="result-placeholder" id="result-placeholder">
+        翻译结果会显示在这里...
+      </div>
+      <div class="result-content" id="result-content" style="display: none;">
+        <div class="result-row">
+          <span class="result-label">表面含义：</span>
+          <span class="result-value" id="surface-meaning"></span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">真实含义：</span>
+          <span class="result-value" id="real-meaning"></span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">盐分指数：</span>
+          <span class="result-value" id="salt-score"></span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">甩锅指数：</span>
+          <span class="result-value" id="blame-score"></span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">推荐回复：</span>
+          <span class="result-value" id="reply"></span>
+        </div>
+        <div class="result-row match-info">
+          <span class="result-label">匹配信息：</span>
+          <span class="result-value" id="match-info"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      Not affiliated with Wargaming. For entertainment only.
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
