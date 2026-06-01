@@ -11,6 +11,7 @@ function createWindow() {
     transparent: true,
     resizable: false,
     alwaysOnTop: true,
+    // Windows 下 'screen-saver' 是最高窗口层级，可覆盖全屏游戏
     backgroundColor: '#00000000',
     webPreferences: {
       contextIsolation: true,
@@ -20,6 +21,9 @@ function createWindow() {
   });
 
   mainWindow.loadFile('index.html');
+
+  // 强制使用 screen-saver 级别，确保覆盖全屏游戏
+  mainWindow.setAlwaysOnTop(true, 'screen-saver');
 
   mainWindow.on('closed', () => {
     mainWindow = null;
