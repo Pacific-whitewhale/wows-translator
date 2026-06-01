@@ -4,7 +4,7 @@ const fs = require('fs');
 
 let mainWindow = null;
 
-// ── AI 配置 ──────────────────────────────────────────────
+// AI config
 let aiConfig = null;
 try {
   const configPath = path.join(__dirname, 'config.json');
@@ -16,7 +16,7 @@ try {
   console.error('[AI] Failed to load config.json:', e.message);
 }
 
-// AI 翻译结果缓存（主进程级，重启清空）
+// AI cache (main-process level, cleared on restart)
 const aiCache = new Map();
 
 function createWindow() {
@@ -27,7 +27,6 @@ function createWindow() {
     transparent: true,
     resizable: false,
     alwaysOnTop: true,
-    // Windows 下 'screen-saver' 是最高窗口层级，可覆盖全屏游戏
     backgroundColor: '#00000000',
     webPreferences: {
       contextIsolation: true,
@@ -38,7 +37,7 @@ function createWindow() {
 
   mainWindow.loadFile('index.html');
 
-  // 强制使用 screen-saver 级别，确保覆盖全屏游戏
+  // Force screen-saver level to stay above fullscreen games
   mainWindow.setAlwaysOnTop(true, 'screen-saver');
 
   mainWindow.on('closed', () => {
@@ -47,33 +46,15 @@ function createWindow() {
 }
 
 ipcMain.on('close-window', () => {
-  if (mainWindow) {
-    mainWindow.close();
-  }
+  if (mainWindow) mainWindow.close();
 });
 
 ipcMain.on('minimize-window', () => {
-  if (mainWindow) {
-    mainWindow.minimize();
-  }
+  if (mainWindow) mainWindow.minimize();
 });
 
-// ── AI 翻译 IPC ──────────────────────────────────────────
-ipcMain.handle('ai-translate', async (_event, text) => {
-  // 检查配置
-  if (!aiConfig || !aiConfig.apiKey || aiConfig.apiKey === 'sk-ant-your-key-here') {
-    return { error: 'no_config' };
-  }
-
-  // 检查缓存
-  const cacheKey = text.trim();
-  if (aiCache.has(cacheKey)) {
-    return { result: aiCache.get(cacheKey) };
-  }
-
-  const prompt = `You are a sarcastic "slang decoder" for the game World of Warships. Players type short complaints/commands in battle chat (English or Chinese). Your job: reveal what they REALLY mean — usually passive-aggressive blame-shifting or salt.
-
-Given this chat phrase: "${text}"
+// ── System prompt for AI translation ────────────────────
+const SYSTEM_PROMPT = `You are a sarcastic "slang decoder" for the game World of Warships. Players type short complaints/commands in battle chat (English or Chinese). Your job: reveal what they REALLY mean — usually passive-aggressive blame-shifting or salt.
 
 Return ONLY a JSON object (no markdown, no backticks, no other text) with exactly these fields:
 - "phrase": the original input
@@ -84,14 +65,27 @@ Return ONLY a JSON object (no markdown, no backticks, no other text) with exactl
 - "reply": a witty comeback the player can paste into chat, in Chinese, 10-30 characters
 - "tags": array of 2-4 Chinese tags like ["甩锅","抱怨","嘲讽"]`;
 
+// ── AI translate IPC ────────────────────────────────────
+ipcMain.handle('ai-translate', async (_event, text) => {
+  if (!aiConfig || !aiConfig.apiKey || aiConfig.apiKey === 'sk-ant-your-key-here') {
+    return { error: 'no_config' };
+  }
+
+  const cacheKey = text.trim();
+  if (aiCache.has(cacheKey)) {
+    return { result: aiCache.get(cacheKey) };
+  }
+
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 15000);
 
   try {
     const provider = aiConfig.provider || 'anthropic';
+    let resp, data, raw;
 
+    // ── Anthropic API ──────────────────────────────────
     if (provider === 'anthropic') {
-      const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      resp = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
         signal: controller.signal,
         headers: {
@@ -102,7 +96,7 @@ Return ONLY a JSON object (no markdown, no backticks, no other text) with exactl
         body: JSON.stringify({
           model: aiConfig.model || 'claude-haiku-4-5-20251001',
           max_tokens: 400,
-          messages: [{ role: 'user', content: prompt }]
+          messages: [{ role: 'user', content: SYSTEM_PROMPT + '\n\nGiven this chat phrase: "' + text + '"' }]
         })
       });
 
@@ -112,21 +106,47 @@ Return ONLY a JSON object (no markdown, no backticks, no other text) with exactl
         return { error: 'api_error', detail: `${resp.status}: ${errBody.slice(0, 200)}` };
       }
 
-      const data = await resp.json();
+      data = await resp.json();
       clearTimeout(timeout);
+      raw = data.content[0].text.trim();
+    } else {
+      // ── DeepSeek / OpenAI-compatible (default) ────────
+      const baseUrl = aiConfig.baseUrl || 'https://api.deepseek.com/v1';
+      resp = await fetch(`${baseUrl}/chat/completions`, {
+        method: 'POST',
+        signal: controller.signal,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${aiConfig.apiKey}`
+        },
+        body: JSON.stringify({
+          model: aiConfig.model || 'deepseek-chat',
+          max_tokens: 400,
+          temperature: 0.7,
+          messages: [
+            { role: 'system', content: SYSTEM_PROMPT },
+            { role: 'user', content: `Given this chat phrase: "${text}"\n\nReturn ONLY a JSON object (no markdown, no backticks) with exactly the fields specified above.` }
+          ]
+        })
+      });
 
-      const raw = data.content[0].text.trim();
-      // 容错：去掉可能的 markdown 代码块包裹
-      const json = raw.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '');
-      const result = JSON.parse(json);
+      if (!resp.ok) {
+        const errBody = await resp.text().catch(() => '');
+        clearTimeout(timeout);
+        return { error: 'api_error', detail: `${resp.status}: ${errBody.slice(0, 200)}` };
+      }
 
-      // 存入缓存
-      aiCache.set(cacheKey, result);
-      return { result };
+      data = await resp.json();
+      clearTimeout(timeout);
+      raw = data.choices[0].message.content.trim();
     }
 
-    // 可扩展其他 provider（OpenAI / DeepSeek 等）
-    return { error: 'unknown_provider' };
+    // Parse JSON from response
+    const json = raw.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '');
+    const result = JSON.parse(json);
+    aiCache.set(cacheKey, result);
+    return { result };
+
   } catch (e) {
     clearTimeout(timeout);
     if (e.name === 'AbortError') {
@@ -143,7 +163,5 @@ app.on('window-all-closed', () => {
 });
 
 app.on('activate', () => {
-  if (mainWindow === null) {
-    createWindow();
-  }
+  if (mainWindow === null) createWindow();
 });
