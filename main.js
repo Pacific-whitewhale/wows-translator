@@ -4,10 +4,19 @@ const fs = require('fs');
 
 let mainWindow = null;
 
-// AI config
+// AI config — for portable exe, look next to the original .exe file.
+// Falls back to bundled path (dev mode / inside asar).
 let aiConfig = null;
 try {
-  const configPath = path.join(__dirname, 'config.json');
+  // Portable mode: env var set by electron-builder pointing to original exe dir
+  const portableDir = process.env.PORTABLE_EXECUTABLE_DIR;
+  // Dev mode: project root
+  const devPath = path.join(__dirname, 'config.json');
+
+  const configPath = portableDir
+    ? path.join(portableDir, 'config.json')
+    : devPath;
+
   if (fs.existsSync(configPath)) {
     const raw = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
     aiConfig = raw.ai || null;
