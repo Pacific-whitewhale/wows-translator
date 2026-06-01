@@ -121,7 +121,7 @@ ipcMain.handle('ai-translate', async (_event, text) => {
         },
         body: JSON.stringify({
           model: aiConfig.model || 'deepseek-chat',
-          max_tokens: 400,
+          max_tokens: 2048,
           temperature: 0.7,
           messages: [
             { role: 'system', content: SYSTEM_PROMPT },
