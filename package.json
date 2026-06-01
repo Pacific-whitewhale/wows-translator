@@ -16,7 +16,11 @@
     "appId": "com.example.wowstranslator",
     "productName": "WoWS Translator",
     "win": {
-      "target": "nsis"
+      "target": "portable",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false
     }
   }
 }
