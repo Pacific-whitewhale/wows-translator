@@ -1,10 +1,10 @@
-# WoWS Translator — 海战黑话翻译姬
+# WoWS Translator — 战舰世界聊天翻译器
 
 [![Electron](https://img.shields.io/badge/Electron-42.x-47848f?logo=electron)](https://www.electronjs.org/)
 [![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 
 > A floating desktop meme translator for World of Warships random battle chat.
-> 一个悬浮在桌面上的《战舰世界》随机战聊天黑话翻译器。
+> 一个悬浮在桌面上的《战舰世界》随机战聊天翻译器。
 
 <p align="center">
   <img src="./screenshot.png" alt="screenshot" width="420" />
@@ -16,8 +16,8 @@
 
 | 功能 | 说明 |
 |------|------|
-| 🔍 **黑话翻译** | 输入一句海战黑话，输出表面含义、真实含义、盐分指数、甩锅指数和推荐回复 |
-| 🎲 **随机换词** | 随机抽取一条已收录的黑话，看看别人都在阴阳什么 |
+| 🔍 **翻译** | 输入一句游戏用语，输出表面含义、真实含义、暴躁值、甩锅指数和推荐回复 |
+| 🎲 **随机换词** | 随机抽取一条已收录的用语，看看别人都在阴阳什么 |
 | 💬 **随机真话** | 随机展示一条战舰世界人生哲理（扎心真相） |
 | 📋 **复制结果** | 一键复制翻译结果，粘贴到聊天框反击 |
 | 🪟 **悬浮置顶** | 无边框透明窗口，始终置顶，不遮挡游戏画面 |
@@ -89,7 +89,7 @@ wows-translator/
 ├── style.css           # 毛玻璃 UI 样式
 ├── package.json        # 项目配置 & 构建脚本
 ├── data/
-│   ├── phrases.json    # 黑话词库
+│   ├── phrases.json    # 游戏用语词库
 │   ├── truths.json     # 随机真话库
 │   └── class_dialogues.json  # 舰种特色对话
 └── docs/

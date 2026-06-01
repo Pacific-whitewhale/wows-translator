@@ -404,7 +404,7 @@ async function translatePhrase(input) {
 function fallbackResult(text) {
   return {
     phrase: '',
-    surface_meaning: '这是一个尚未收录的游戏黑话。',
+    surface_meaning: '这是一个尚未收录的游戏用语。',
     real_meaning: '系统暂时无法翻译，但不代表你的血压不会因此升高。',
     salt_score: 66,
     blame_score: 100,
@@ -487,7 +487,7 @@ function copyResult() {
   const lines = [
     '【表面含义】' + currentResult.surface_meaning,
     '【真实含义】' + currentResult.real_meaning,
-    '盐分指数：' + (currentResult.salt_score || 0) + ' / 100',
+    '暴躁值：' + (currentResult.salt_score || 0) + ' / 100',
     '甩锅指数：' + (currentResult.blame_score || 0) + ' / 100',
     '推荐回复：' + currentResult.reply
   ];
