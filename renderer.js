@@ -404,7 +404,7 @@ async function translatePhrase(input) {
 function fallbackResult(text) {
   return {
     phrase: '',
-    surface_meaning: '这是一个尚未收录的海战黑话。',
+    surface_meaning: '这是一个尚未收录的游戏黑话。',
     real_meaning: '系统暂时无法翻译，但不代表你的血压不会因此升高。',
     salt_score: 66,
     blame_score: 100,
@@ -460,7 +460,7 @@ function renderTranslation(result) {
     'fuzzy':    '内置词库 · 模糊匹配 · ' + (result.confidence || 0) + '%',
     'fuzzy_low':'内置词库 · 低置信度匹配 · ' + (result.confidence || 0) + '%（该结果可能不完全准确）',
     'fallback': '未命中词库 · 默认回复',
-    'ai':       '🤖 AI 智能分析 · 80%（大模型生成，仅供参考）',
+    'ai':       '🤖 AI 智能分析 · 80%',
     'random':   '内置词库 · 随机换词 · 100%'
   };
 

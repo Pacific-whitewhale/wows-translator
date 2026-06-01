@@ -19,14 +19,15 @@ html, body {
   height: 560px;
   margin: 0;
   border-radius: 16px;
-  background: rgba(20, 22, 28, 0.92);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(180, 200, 230, 0.3);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  color: #e0e0e0;
+  color: #333;
+  box-shadow: 0 4px 30px rgba(100, 150, 220, 0.12);
 }
 
 /* Title Bar */
@@ -43,7 +44,7 @@ html, body {
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.5px;
-  color: #ffffff;
+  color: #2c3e50;
 }
 
 .title-buttons {
@@ -55,7 +56,7 @@ html, body {
   -webkit-app-region: no-drag;
   background: transparent;
   border: none;
-  color: #888;
+  color: #999;
   font-size: 14px;
   cursor: pointer;
   width: 28px;
@@ -68,19 +69,19 @@ html, body {
 }
 
 .title-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
+  background: rgba(0, 0, 0, 0.06);
+  color: #333;
 }
 
 #btn-close:hover {
-  background: rgba(255, 60, 60, 0.6);
-  color: #fff;
+  background: rgba(255, 60, 60, 0.15);
+  color: #e74c3c;
 }
 
 /* Subtitle */
 .subtitle {
   font-size: 11px;
-  color: #777;
+  color: #99aabb;
   text-align: center;
   padding: 0 16px 12px 16px;
   letter-spacing: 0.3px;
@@ -102,10 +103,10 @@ select {
 textarea {
   width: 100%;
   resize: none;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #f0f4f8;
+  border: 1px solid #d0dae5;
   border-radius: 10px;
-  color: #e0e0e0;
+  color: #333;
   font-size: 13px;
   padding: 10px 12px;
   font-family: inherit;
@@ -114,11 +115,12 @@ textarea {
 }
 
 textarea:focus {
-  border-color: rgba(100, 160, 255, 0.5);
+  border-color: rgba(80, 140, 255, 0.5);
+  background: #fff;
 }
 
 textarea::placeholder {
-  color: #555;
+  color: #aabbcc;
 }
 
 /* Button Row */
@@ -134,7 +136,7 @@ textarea::placeholder {
   flex: 1;
   padding: 8px 4px;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid #d0dae5;
   font-size: 11px;
   font-family: inherit;
   cursor: pointer;
@@ -144,37 +146,37 @@ textarea::placeholder {
 }
 
 .btn-primary {
-  background: rgba(80, 140, 255, 0.25);
-  color: #b0d0ff;
-  border-color: rgba(80, 140, 255, 0.3);
+  background: rgba(80, 140, 255, 0.12);
+  color: #3a7bd5;
+  border-color: rgba(80, 140, 255, 0.25);
 }
 
 .btn-primary:hover {
-  background: rgba(80, 140, 255, 0.4);
-  border-color: rgba(80, 140, 255, 0.5);
-  color: #fff;
+  background: rgba(80, 140, 255, 0.22);
+  border-color: rgba(80, 140, 255, 0.4);
+  color: #2c62ae;
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.06);
-  color: #aaa;
+  background: #f5f7fa;
+  color: #666;
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: #ddd;
-  border-color: rgba(255, 255, 255, 0.2);
+  background: #e8ecf2;
+  color: #333;
+  border-color: #c0cad6;
 }
 
 .btn-copy {
-  background: rgba(255, 255, 255, 0.06);
-  color: #aaa;
+  background: #f5f7fa;
+  color: #666;
 }
 
 .btn-copy:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: #ddd;
-  border-color: rgba(255, 255, 255, 0.2);
+  background: #e8ecf2;
+  color: #333;
+  border-color: #c0cad6;
 }
 
 /* Result Area */
@@ -182,15 +184,15 @@ textarea::placeholder {
   flex: 1;
   margin: 0 16px 10px 16px;
   padding: 12px 14px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: #f7f9fc;
+  border: 1px solid #e2e8f0;
   border-radius: 10px;
   overflow-y: auto;
   min-height: 0;
 }
 
 .result-placeholder {
-  color: #555;
+  color: #aabbcc;
   font-size: 12px;
   text-align: center;
   padding-top: 40px;
@@ -198,7 +200,7 @@ textarea::placeholder {
 
 /* AI 加载动画 */
 .ai-loading {
-  color: #80c0ff;
+  color: #3a7bd5;
   font-size: 14px;
   display: inline-flex;
   align-items: center;
@@ -232,46 +234,46 @@ textarea::placeholder {
 }
 
 .result-label {
-  color: #888;
+  color: #8899aa;
   white-space: nowrap;
   flex-shrink: 0;
   min-width: 70px;
 }
 
 .result-value {
-  color: #d0d0d0;
+  color: #444;
 }
 
 #salt-score {
-  color: #ff8c52;
+  color: #e87040;
   font-weight: 600;
 }
 
 #blame-score {
-  color: #ff5252;
+  color: #e74c3c;
   font-weight: 600;
 }
 
 #reply {
-  color: #80c0ff;
+  color: #3a7bd5;
   font-style: italic;
 }
 
 .match-info {
   margin-top: 4px;
   padding-top: 6px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid #e2e8f0;
 }
 
 #match-info {
-  color: #777;
+  color: #8899aa;
   font-size: 11px;
 }
 
 /* Footer */
 .footer {
   font-size: 10px;
-  color: #444;
+  color: #bcc8d6;
   text-align: center;
   padding: 8px 16px 10px 16px;
   flex-shrink: 0;
@@ -288,10 +290,10 @@ textarea::placeholder {
 }
 
 .result-area::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.08);
   border-radius: 2px;
 }
 
 .result-area::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.15);
 }

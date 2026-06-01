@@ -1,7 +1,8 @@
 {
   "ai": {
-    "provider": "anthropic",
-    "apiKey": "sk-ant-your-api-key-here",
-    "model": "claude-haiku-4-5-20251001"
+    "provider": "deepseek",
+    "apiKey": "sk-your-api-key-here",
+    "model": "deepseek-chat",
+    "baseUrl": "https://api.deepseek.com/v1"
   }
 }
