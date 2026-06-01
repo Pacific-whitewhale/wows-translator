@@ -1,0 +1,463 @@
+{
+  "japan": {
+    "name_cn": "日本",
+    "prefix": "IJN",
+    "destroyers": [
+      "Umikaze", "Wakatake", "Isokaze", "Minekaze", "Mutsuki", "Hatsuharu",
+      "Fubuki", "Akatsuki", "Shiratsuyu", "Akizuki", "Kitakaze", "Harugumo",
+      "Shimakaze", "Hayate", "Yudachi", "Asashio", "Harekaze", "HSF Harekaze",
+      "AL Yukikaze", "Yukikaze", "Kamikaze", "Kamikaze R", "Fujin", "Tachibana",
+      "Tachibana Lima", "Shinonome"
+    ],
+    "cruisers": [
+      "Hashidate", "Chikuma", "Tenryu", "Kuma", "Furutaka", "Aoba",
+      "Myoko", "Mogami", "Ibuki", "Zao", "Yoshino", "Yoshino B",
+      "Atago", "Atago B", "ARP Takao", "ARP Maya", "ARP Nachi", "ARP Haguro",
+      "ARP Myoko", "ARP Ashigara", "Tone", "Kitakami", "Yahagi",
+      "Tokachi", "Shimanto", "Takahashi", "Yodo", "Omono",
+      "Mikuma", "Suzuya", "Kumano", "Iwaki Alpha",
+      "Maya", "Nachi", "Haguro", "Ashigara",
+      "Azuma", "Yoshino", "Zaō CLR"
+    ],
+    "battleships": [
+      "Kawachi", "Myogi", "Kongo", "Fuso", "Nagato", "Amagi",
+      "Izumo", "Yamato", "Satsuma", "Shikishima",
+      "Musashi", "Kii", "Ashitaka", "Hizen", "Iwami",
+      "Hyuga", "Ise", "Mutsu", "ARPG Kongo", "ARPG Haruna",
+      "ARPG Hiei", "ARPG Kirishima", "Kongo B", "Yamato ARP",
+      "Adatara", "Bungo", "Daisen", "Tsukuba"
+    ],
+    "aircraft_carriers": [
+      "Hosho", "Ryujo", "Zuiho", "Hiryu", "Shokaku", "Taiho",
+      "Hakuryu", "Shinano", "Kaga", "Kaga B", "Akagi",
+      "ARP Hoshimiya", "Sekiryu"
+    ],
+    "submarines": [
+      "I-56", "I-58", "I-201", "I-400", "U-190 (IJN)"
+    ]
+  },
+  "usa": {
+    "name_cn": "美国",
+    "prefix": "USN",
+    "destroyers": [
+      "Sampson", "Wickes", "Clemson", "Farragut", "Mahan", "Sims",
+      "Benson", "Fletcher", "Gearing", "Somers", "Forrest Sherman",
+      "Kidd", "Black", "Hill", "Monaghan", "Nicholas", "O'Bannon",
+      "Benham", "Smaland B", "Johnston", "Halford",
+      "Velos", "Marceau", "Joshua Humphreys"
+    ],
+    "cruisers": [
+      "Erie", "Chester", "St. Louis", "Phoenix", "Omaha", "Pensacola",
+      "Dallas", "Helena", "New Orleans", "Baltimore", "Buffalo",
+      "Des Moines", "Worcester", "Jacksonville", "Annapolis",
+      "Atlanta", "Atlanta B", "Flint", "Indianapolis",
+      "Alaska", "Alaska B", "Puerto Rico", "Congress", "Salem",
+      "Wichita", "Boise", "Marblehead", "Marblehead Lima",
+      "Tulsa", "Rochester", "San Diego",
+      "Seattle", "Cleveland", "Montpelier", "Birmingham",
+      "Anchorage", "Austin", "Vallejo"
+    ],
+    "battleships": [
+      "South Carolina", "Wyoming", "New York", "New Mexico", "Colorado",
+      "North Carolina", "Iowa", "Montana", "Maine", "New Hampshire",
+      "Kansas", "Minnesota", "Vermont", "Louisiana",
+      "West Virginia", "West Virginia '44", "California", "Arizona",
+      "Texas", "Oklahoma", "Nevada", "Tennessee",
+      "Massachusetts", "Massachusetts B", "Alabama", "Alabama VL",
+      "Missouri", "Georgia", "Ohio", "Rhode Island",
+      "Florida", "Delaware", "Arkansas Beta",
+      "Illinois", "Kentucky", "Nebraska", "Wisconsin"
+    ],
+    "aircraft_carriers": [
+      "Langley", "Ranger", "Independence", "Yorktown", "Lexington",
+      "Midway", "Franklin D. Roosevelt", "United States",
+      "Enterprise", "Hornet", "Saipan", "San Jacinto",
+      "Essex", "Kearsarge", "Kearsarge B",
+      "Yorktown B", "Catalk"
+    ],
+    "submarines": [
+      "Cachalot", "Salmon", "Balao", "Gato", "Archerfish",
+      "U-505 (USN)", "Albacore"
+    ],
+    "hybrid": ["Kearsarge", "Nebraska", "Delaware", "Louisiana"]
+  },
+  "germany": {
+    "name_cn": "德国",
+    "prefix": "KMS",
+    "destroyers": [
+      "V-25", "G-101", "T-22", "Ernst Gaede", "Leberecht Maass",
+      "Z-23", "Z-46", "Z-52", "Z-31", "Z-35", "Z-42", "Z-44",
+      "Z-39", "T-61", "Karl von Schonberg", "Felix Schultz",
+      "Georg Hoffmann", "Gustav-Julius Maerker", "Admiral Schroder",
+      "ZF-6", "ZF-2", "Ludemann"
+    ],
+    "cruisers": [
+      "Hermelin", "Dresden", "Kolberg", "Karlsruhe", "Konigsberg",
+      "Nurnberg", "Yorck", "Admiral Hipper", "Roon", "Hindenburg",
+      "Clausewitz", "Prinz Eugen", "Mainz", "Mainz B",
+      "Weimar", "Munchen", "Agir", "Siegfried",
+      "Admiral Graf Spee", "HSF Admiral Graf Spee",
+      "Scharnhorst '43", "Wiesbaden", "Schill",
+      "Bismarck (Cruiser)", "Tirpitz (Cruiser)",
+      "Blucher", "Admiral Scheer", "Lutzow",
+      "Prinz Eitel Friedrich", "Prinz Heinrich", "Zieten",
+      "Emden", "Leipzig", "Nurnberg B", "Odin"
+    ],
+    "battleships": [
+      "Nassau", "Kaiser", "Konig", "Bayern", "Gneisenau",
+      "Bismarck", "Friedrich der Grose", "Grosser Kurfurst",
+      "Preussen", "Hannover",
+      "Tirpitz", "Tirpitz B", "Scharnhorst",
+      "Pommern", "Pommern B", "Brandenburg",
+      "Anhalt", "Mecklenburg", "Prinz Rupprecht",
+      "Schlieffen", "Zeiten",
+      "Odin", "Pommern B", "Kurfurst WL",
+      "AL Prinz Heinrich", "AL Bismarck", "Dosetsu"
+    ],
+    "aircraft_carriers": [
+      "Rhein", "Weser", "August von Parseval", "Manfred von Richthofen",
+      "Max Immelmann", "Erich Lowenhardt", "Graf Zeppelin",
+      "Richthofen B"
+    ],
+    "submarines": [
+      "U-69", "U-190", "U-2501", "U-4501"
+    ]
+  },
+  "ussr": {
+    "name_cn": "苏联",
+    "prefix": "VMF",
+    "destroyers": [
+      "Storozhevoi", "Derzki", "Izyaslav", "Podvoisky", "Gnevny",
+      "Minsk", "Kiev", "Tashkent", "Udaloi", "Grozovoi", "Delny",
+      "Khabarovsk", "Zorkiy",
+      "Leningrad", "Okhotnik", "Okhotnik B", "Gremyashchy", "Neustrashimy",
+      "Ognevoi", "Baku", "Tashkent '39",
+      "Sovetsky Soyuz (DD)", "Smelyi", "Boiki"
+    ],
+    "cruisers": [
+      "Orlan", "Novik", "Bogatyr", "Svietlana", "Kirov",
+      "Budyonny", "Shchors", "Chapayev", "Dmitri Donskoi",
+      "Moskva", "Nevsky", "Petropavlovsk", "Novosibirsk",
+      "Kommissar", "Alexander Nevsky",
+      "Molotov", "Makarov", "Kutuzov", "Kronshtadt",
+      "Stalingrad", "Sevastopol", "Mikhail Kutuzov",
+      "Ochakov", "Pyotr Bagration", "Tallinn", "Riga",
+      "Azov", "Ushakov", "Kozma Minin",
+      "Dmitry Pozharsky", "Voroshilovsk", "Smolensk"
+    ],
+    "battleships": [
+      "Knyaz Suvorov", "Gangut", "Pyotr Velikiy", "Izmail",
+      "Sinop", "Vladivostok", "Sovetsky Soyuz", "Kremlin",
+      "Slava", "Ushakov (BB)",
+      "Oktyabrskaya Revolutsiya", "Poltava", "Navarin",
+      "Borodino", "AL Sovetskaya Rossiya"
+    ],
+    "aircraft_carriers": [
+      "Komsomolets", "Serov", "Pobeda", "Chkalov", "Nakhimov",
+      "Admiral Nakhimov", "Chkalov B"
+    ],
+    "submarines": [
+      "S-1", "L-20", "K-1", "K-1000"
+    ]
+  },
+  "uk": {
+    "name_cn": "英国",
+    "prefix": "HMS",
+    "destroyers": [
+      "Medea", "Valkyrie", "Wakeful", "Acasta", "Icarus",
+      "Jervis", "Lightning", "Jutland", "Daring", "Druid",
+      "Campbeltown", "Cossack", "Gallant", "Orkan",
+      "Haida", "Huron", "Gadjah Mada", "Siliwangi",
+      "AL Jervis", "Jupiter '42", "Daring WL"
+    ],
+    "cruisers": [
+      "Black Swan", "Weymouth", "Caledon", "Danae", "Emerald",
+      "Leander", "Fiji", "Edinburgh", "Neptune", "Minoataur",
+      "Cerberus", "Albemarle", "Goliath", "Drake",
+      "Plymouth", "Belfast", "Belfast '43", "Exeter",
+      "London", "Devonshire", "Surrey", "Cheshire",
+      "Tiger '59", "Nottingham", "Monmouth",
+      "Hampshire", "Defence", "Gibraltar",
+      "AL Cheshire", "Belfast B"
+    ],
+    "battleships": [
+      "Indefatigable", "Queen Elizabeth", "King George V",
+      "Lion", "Conqueror", "Devastation",
+      "Warspite", "Hood", "Vanguard", "Duke of York",
+      "Nelson", "Rodney", "Monarch", "Thunderer",
+      "Marlborough", "Incomparable", "Renown '44",
+      "Repulse", "Collingwood", "Duncan",
+      "St. Vincent", "Vincent", "Hawke",
+      "Tiger", "Temeraire", "Rooke",
+      "Agincourt", "Orion '44"
+    ],
+    "aircraft_carriers": [
+      "Hermes", "Furious", "Implacable", "Audacious", "Eagle",
+      "Ark Royal", "Indomitable", "Colossus", "Malta",
+      "Theseus"
+    ],
+    "submarines": [
+      "Undine", "Sturdy", "Thrasher", "Alliance"
+    ]
+  },
+  "france": {
+    "name_cn": "法国",
+    "prefix": "MN",
+    "destroyers": [
+      "Bougainville", "Jaguar", "Guepard", "Vauquelin", "Le Fantasque",
+      "Mogador", "Kleber", "Marceau", "Cassard",
+      "Aigle", "Sirocco", "Le Terrible", "L'Adroit",
+      "AL Le Terrible", "Le Hardi"
+    ],
+    "cruisers": [
+      "Jurien", "Friant", "Duguay-Trouin", "Emile Bertin",
+      "La Galissonniere", "Algerie", "Charles Martel",
+      "Saint-Louis", "Henri IV", "Conde",
+      "Marseille", "Cherbourg", "Brest", "Toulon",
+      "De Grasse", "Bayard", "Colbert",
+      "Dupleix", "Carnot", "Brennus"
+    ],
+    "battleships": [
+      "Turenne", "Courbet", "Bretagne", "Normandie", "Lyon",
+      "Richelieu", "Alsace", "Republique", "Patrie",
+      "Dunkerque", "Strasbourg", "Gascogne", "Champagne",
+      "Jean Bart", "Jean Bart B", "Flandre", "Bourgogne",
+      "Picardie", "Bearn (BB)"
+    ],
+    "aircraft_carriers": [
+      "Bearn"
+    ],
+    "submarines": [
+      "Saphir", "Surcouf", "Guepard (SS)"
+    ]
+  },
+  "italy": {
+    "name_cn": "意大利",
+    "prefix": "RM",
+    "destroyers": [
+      "Curtatone", "Turbine", "Maestrale", "Aviere",
+      "Luca Tarigo", "Vittorio Cuniberti", "Adriatico",
+      "Paolo Emilio", "Attilio Regolo",
+      "FR25", "Leone", "Aviere (Premium)",
+      "AL Yukikaze (IT)"
+    ],
+    "cruisers": [
+      "Nino Bixio", "Taranto", "Montecuccoli", "Trento",
+      "Zara", "Amalfi", "Brindisi", "Venezia", "Napoli",
+      "Napoli B", "Michelangelo", "Genova",
+      "Duca d'Aosta", "Duca degli Abruzzi", "Gorizia",
+      "Pola", "Abruzzi"
+    ],
+    "battleships": [
+      "Dante Alighieri", "Conte di Cavour", "Andrea Doria",
+      "Francesco Caracciolo", "Vittorio Veneto", "Lepanto",
+      "Cristoforo Colombo", "Ruggiero di Lauria",
+      "Giulio Cesare", "Roma", "Marco Polo",
+      "Giuseppe Verdi", "Sicilia",
+      "AL Littorio", "Roma (AL)"
+    ],
+    "aircraft_carriers": [
+      "Aquila"
+    ],
+    "submarines": [
+      "Balilla", "Glauco", "Brin", "Marconi"
+    ]
+  },
+  "pan_asia": {
+    "name_cn": "泛亚",
+    "prefix": "",
+    "destroyers": [
+      "Longjiang", "Phra Ruang", "Shenyang", "Jianwei",
+      "Fushun", "Gadjah Mada", "Hsienyang", "Chung Mu",
+      "Yueyang", "Lushun",
+      "Anshan", "Loyang", "Siliwangi", "Fenyang",
+      "Huanghe (DD)", "Kunming", "Dalian"
+    ],
+    "cruisers": [
+      "Chengan", "Ning Hai", "Chumphon", "Rahmat",
+      "Harbin", "Sejong", "Jinan",
+      "Ping Hai", "Huanghe", "Irian", "Sun Yat-Sen",
+      "Wukong", "Tianjin"
+    ],
+    "battleships": [
+      "Sun Yat-Sen (BB)", "Bajie", "Wujing"
+    ],
+    "aircraft_carriers": [
+      "Hosho (PA)", "Ryujo (PA)", "San Zang"
+    ]
+  },
+  "pan_america": {
+    "name_cn": "泛美",
+    "prefix": "",
+    "destroyers": [
+      "Humaita", "Parana", "Juruena",
+      "La Argentina"
+    ],
+    "cruisers": [
+      "Hercules", "Almirante Barroso", "Bolognesi",
+      "Coronel Bolognesi", "Ignacio Allende",
+      "Santander", "San Martin", "Libertad",
+      "Nueve de Julio", "Almirante Grau",
+      "O'Higgins", "Los Andes"
+    ],
+    "battleships": [
+      "Rio de Janeiro", "Atlantico", "Ipiranga",
+      "Libertad (BB)"
+    ],
+    "aircraft_carriers": [
+      "Independencia"
+    ]
+  },
+  "europe": {
+    "name_cn": "欧洲",
+    "prefix": "",
+    "destroyers": [
+      "Gryf", "Romulus",
+      "Vasteras", "Skane", "Oland", "Ostergotland",
+      "Halland", "Smaland", "Ragnar", "Gdansk",
+      "Blyskawica", "Friesland", "Groningen",
+      "Split", "Lambros Katsonis", "Velos",
+      "Muavenet", "Stord", "Stord '43",
+      "Orkan (EU)", "Grom", "Kalmar",
+      "Blyskawica B", "Katsonis B"
+    ],
+    "cruisers": [
+      "Visby", "Goteborg"
+    ],
+    "battleships": [
+      "Viribus Unitis", "Prinz Eugen (EU)", "Karl XIV Johan",
+      "Svea", "Niord"
+    ],
+    "aircraft_carriers": [
+      "Visby (CV)"
+    ]
+  },
+  "netherlands": {
+    "name_cn": "荷兰",
+    "prefix": "HNLMS",
+    "destroyers": [
+      "Van Kinsbergen", "Tromp"
+    ],
+    "cruisers": [
+      "Van Kinsbergen (CL)", "Java", "Celebes",
+      "Eendracht", "Haarlem", "Johan de Witt",
+      "Gouden Leeuw", "Utrecht", "Prins van Oranje",
+      "De Ruyter", "De Zeven Provincien",
+      "Van Speijk", "Kijkduin"
+    ],
+    "battleships": [],
+    "aircraft_carriers": [],
+    "submarines": []
+  },
+  "spain": {
+    "name_cn": "西班牙",
+    "prefix": "",
+    "destroyers": [
+      "Alava", "Almirante Valdes", "Asturias", "Canarias",
+      "Andalucia", "Cataluna", "Alvaro de Bazan"
+    ],
+    "cruisers": [
+      "Navarra", "Galicia", "Baleares", "Castilla",
+      "Numancia"
+    ],
+    "battleships": [
+      "Victoria", "Jaime I", "Espana", "Alfonso"
+    ]
+  },
+  "commonwealth": {
+    "name_cn": "英联邦",
+    "prefix": "HMAS/HMNZS/HMCS",
+    "destroyers": [
+      "Vampire", "Vampire II", "Haida (CW)",
+      "Huron (CW)", "Voyager"
+    ],
+    "cruisers": [
+      "Port Jackson", "Caradoc", "Dunedin",
+      "Hobart", "Perth", "Brisbane", "Auckland",
+      "Melbourne", "Cerberus (CW)",
+      "Sydney", "Encounter", "Delhi",
+      "Mysore", "Uganda", "Yukon"
+    ],
+    "battleships": [],
+    "aircraft_carriers": []
+  },
+  "famous_abbreviations": {
+    "description": "Common chat abbreviations for specific ships",
+    "mappings": {
+      "shima": "Shimakaze",
+      "yamy": "Yamato",
+      "yammy": "Yamato",
+      "mushi": "Musashi",
+      "zao": "Zao",
+      "hindi": "Hindenburg",
+      "hiny": "Hindenburg",
+      "gk": "Grosser Kurfurst",
+      "kurfurst": "Grosser Kurfurst",
+      "gkf": "Grosser Kurfurst",
+      "republic": "Republique",
+      "repub": "Republique",
+      "repy": "Republique",
+      "monty": "Montana",
+      "meme": "Minotaur",
+      "mino": "Minotaur",
+      "minta": "Minotaur",
+      "conq": "Conqueror",
+      "conqk": "Conqueror",
+      "thundy": "Thunderer",
+      "thunder": "Thunderer",
+      "krem": "Kremlin",
+      "kreml": "Kremlin",
+      "slava": "Slava",
+      "smol": "Smolensk",
+      "smoly": "Smolensk",
+      "colo": "Colombo",
+      "colombo": "Cristoforo Colombo",
+      "cristo": "Cristoforo Colombo",
+      "dm": "Des Moines",
+      "salem": "Salem",
+      "wooster": "Worcester",
+      "nevsky": "Alexander Nevsky",
+      "petro": "Petropavlovsk",
+      "stalin": "Stalingrad",
+      "stalingrad": "Stalingrad",
+      "napoli": "Napoli",
+      "marseille": "Marseille",
+      "henri": "Henri IV",
+      "henry": "Henri IV",
+      "haru": "Harugumo",
+      "kitakaze": "Kitakaze",
+      "akizuki": "Akizuki",
+      "gearing": "Gearing",
+      "fletcher": "Fletcher",
+      "daring": "Daring",
+      "jutland": "Jutland",
+      "halland": "Halland",
+      "ragnar": "Ragnar",
+      "smaland": "Smaland",
+      "kléber": "Kleber",
+      "kleb": "Kleber",
+      "marceau": "Marceau",
+      "elbing": "Z-52 (German DD line)",
+      "z52": "Z-52",
+      "z42": "Z-42",
+      "hakuryu": "Hakuryu",
+      "haku": "Hakuryu",
+      "midway": "Midway",
+      "mvr": "Manfred von Richthofen",
+      "richtofen": "Manfred von Richthofen",
+      "naki": "Admiral Nakhimov",
+      "nahkimov": "Admiral Nakhimov",
+      "fdr": "Franklin D. Roosevelt",
+      "roosevelt": "Franklin D. Roosevelt",
+      "essex": "Essex",
+      "malta": "Malta",
+      "eagle": "Eagle (UK CV)",
+      "audacious": "Audacious",
+      "u4501": "U-4501",
+      "gato": "Gato",
+      "balao": "Balao",
+      "arx": "Archerfish",
+      "i56": "I-56"
+    }
+  }
+}
